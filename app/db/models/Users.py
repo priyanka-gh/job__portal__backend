@@ -5,10 +5,10 @@ from app.db.session import engine
 
 
 class User(Base):
-    __tablename__ = "User"
+    __tablename__ = "Users"
     userid = Column(Integer, primary_key=True, index=True, autoincrement=True)
     email = Column(String(30), unique = True)
-    password = Column(String(15))
+    password = Column(String(255))
     role = Column(Integer())
 
     class Config:
