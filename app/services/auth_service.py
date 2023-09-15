@@ -31,7 +31,7 @@ def signup(newUser: UserSchema):
 
     except Exception as e:
         raise HTTPException(
-                status_code=400, detail=""
+                status_code=400, detail=str(e)
             )
 
 def get_token(email: str, password: str, db):
