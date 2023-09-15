@@ -9,7 +9,8 @@ load_dotenv()
 SQLALCHEMY_DB_URL = os.environ.get("DB_URL")
 engine = create_engine(
     "sqlite:///./sql_app.db",
-    connect_args = {"check_same_thread":False}
+    connect_args = {"check_same_thread":False},
+    pool_pre_ping=True
 )
 
 SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
