@@ -7,7 +7,6 @@ from typing import Optional
 from fastapi import HTTPException, status, Depends
 import json
 import os
-from dotenv import load_dotenv
 from app.db.models.Users import User
 from fastapi.security import OAuth2PasswordBearer
 from app.db.session import SessionLocal
@@ -129,7 +128,8 @@ def check_user_role(token: dict = Depends(verify_token)):
         )
     return True
 
-firebase_json_str = os.environ.get("FIREBASE_JSON")
+cred = credentials.Certificate("/etc/secrets/serviceAccountKey.json")
+firebase_admin.initialize_app(cred, {'storageBucket': 'wide-cargo-388709.appspot.com'})
 
 if firebase_json_str:
     firebase_json = json.loads(firebase_json_str)
