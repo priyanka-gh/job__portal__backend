@@ -44,12 +44,6 @@ async def get_this_job(jobid : str):
     db = SessionLocal()
     return get_job_by_id(jobid, db)
 
-
-# @router.post("/apply/{jobid}")
-# async def apply(jobid : int, application : ApplicationSchema, token: dict = Depends(verify_token)):
-#     db = SessionLocal()
-#     return apply_on_job(jobid, application, token, db)
-
 @router.post("/apply/{jobid}", response_model=ApplicationSchema)
 async def apply(
     jobid: int,
@@ -63,9 +57,8 @@ async def apply(
 
 
 @router.get("/applications/{userid}")
-async def get_jobs(userid : int, token: dict = Depends(verify_token)):
+async def get_applications(userid : int, token: dict = Depends(verify_token)):
     db = SessionLocal()
-    
     return get_my_applications(userid, db)
 
 @router.get("/user-profile/{userid}")

@@ -175,8 +175,7 @@ from fastapi import HTTPException
 
 def get_my_applications(userid: int, db):
     try:
-        applications_with_company = db.query(Application, Jobs).filter(Application.jobId == Jobs.jobid).all()
-
+        applications_with_company = db.query(Application, Jobs).filter(Application.jobId == Jobs.jobid).filter(Application.userId == userid).all()
         my_applications = []
 
         for application, job in applications_with_company:
@@ -199,6 +198,7 @@ def get_my_applications(userid: int, db):
 
     except Exception as e:
         db.rollback()
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
 def user_profile_details(userid : int, token_sub, db):
