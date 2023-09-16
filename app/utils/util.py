@@ -131,12 +131,6 @@ def check_user_role(token: dict = Depends(verify_token)):
 cred = credentials.Certificate("/etc/secrets/serviceAccountKey.json")
 firebase_admin.initialize_app(cred, {'storageBucket': 'wide-cargo-388709.appspot.com'})
 
-if firebase_json_str:
-    firebase_json = json.loads(firebase_json_str)
-
-    cred = credentials.Certificate(firebase_json)
-    firebase_admin.initialize_app(cred, {'storageBucket': 'wide-cargo-388709.appspot.com'})
-
 def upload_resume(email: str, resume_file: UploadFile) -> str:
     try:
         print("gigi ",resume_file)
