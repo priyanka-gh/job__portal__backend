@@ -127,7 +127,7 @@ def apply_on_job(
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
 
-    existing_applicant = db.query(Application).filter(Application.userId == user.userId).filter(Application.jobId == job_id).first()
+    existing_applicant = db.query(Application).filter(Application.jobId == job_id).first()
 
     if existing_applicant:
         raise HTTPException(status_code=400, detail="You have already applied for this job")

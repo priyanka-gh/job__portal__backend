@@ -14,7 +14,7 @@ class Application(Base):
     firstName = Column(String(15))
     middleName = Column(String(15))
     lastName = Column(String(15))
-    email = Column(String(30), unique = True)
+    email = Column(String(30))
     phone = Column(String(10))
     resumeLink = Column(String(255))
     minYearsOfExperience = Column(String(255))
