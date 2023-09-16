@@ -112,6 +112,7 @@ def get_job_by_id(jobid, db):
         db.rollback()
         raise HTTPException(status_code=500, detail="Internal Server Error")
         
+
 def apply_on_job(
     job_id, 
     minYearsOfExperience, 
@@ -126,11 +127,6 @@ def apply_on_job(
     
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
-
-    existing_applicant = db.query(Application).filter(Application.jobId == job_id).first()
-
-    if existing_applicant:
-        raise HTTPException(status_code=400, detail="You have already applied for this job")
 
     if job.active == 0:
         raise HTTPException(status_code=400, detail="No longer accepting applications")
@@ -210,3 +206,6 @@ def user_profile_details(userid : int, token_sub, db):
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
+
+
+        
