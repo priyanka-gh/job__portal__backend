@@ -16,8 +16,8 @@ class Application(Base):
     lastName = Column(String(15))
     email = Column(String(30), unique = True)
     phone = Column(String(10))
-    resumeLink = Column(String)
-    minYearsOfExperience = Column(String)
+    resumeLink = Column(String(255))
+    minYearsOfExperience = Column(String(255))
     appliedAt = Column(DateTime)
     status = Column(Enum('APPLIED','UNDER_CONSIDERATION','REJECTED','HIRED'))
 

@@ -13,7 +13,7 @@ class UserProfile(Base):
     lastName = Column(String(15))
     email = Column(String(30), unique = True)
     phone = Column(String(10))
-    roleTitle = Column(String())
+    roleTitle = Column(String(255))
 
 
     class Config:
