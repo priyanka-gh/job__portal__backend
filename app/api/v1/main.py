@@ -7,7 +7,7 @@ from app.api.v1.routes.recruiter import recruiter as recruiter
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",  
+    "https://job-portal-reactjs.netlify.app/",  
 ]
 
 app.add_middleware(
