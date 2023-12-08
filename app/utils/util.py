@@ -128,7 +128,9 @@ def check_user_role(token: dict = Depends(verify_token)):
         )
     return True
 
-cred = credentials.Certificate("/etc/secrets/serviceAccountKey.json")
+# cred = credentials.Certificate("/etc/secrets/serviceAccountKey.json")
+
+cred = credentials.Certificate("app/utils/serviceAccountKey.json")
 firebase_admin.initialize_app(cred, {'storageBucket': 'wide-cargo-388709.appspot.com'})
 
 def upload_resume(email: str, resume_file: UploadFile) -> str:
